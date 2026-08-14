@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:16
+    container_name: sql-training-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sql_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sql_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-sql_training}
+      TZ: Asia/Tokyo
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sql_user} -d ${POSTGRES_DB:-sql_training}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  db-data:
