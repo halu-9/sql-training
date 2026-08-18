@@ -8,8 +8,15 @@
 ### 1. コンテナ起動
 
 ```bash
+# macでdockerを起動するときはdocker desktopを起動する（daemonの直起動は不可みたい）
+open -a "Docker"
+```
+
+```bash
 docker compose up -d
 ```
+
+※起動できないときはゾンビプロセスが残っていることが大半なので確認
 
 初回起動時に `init/` フォルダ内の `.sql` ファイルが自動実行されます
 (テーブル定義や初期データを置いておくと便利)。
