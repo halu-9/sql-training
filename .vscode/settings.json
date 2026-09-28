@@ -8,6 +8,15 @@
       "database": "sql_training",
       "username": "sql_user",
       "password": "sql_pass"
+    },
+    {
+      "name": "worldcup2014 (postgres)",
+      "driver": "PostgreSQL",
+      "server": "localhost",
+      "port": 5432,
+      "database": "worldcup2014",
+      "username": "sql_user",
+      "password": "sql_pass"
     }
   ]
 }
